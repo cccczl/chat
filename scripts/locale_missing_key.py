@@ -9,8 +9,9 @@ def find_missing_keys(base_dict, other_dict):
         if key not in other_dict:
             missing_keys[key] = base_dict[key]
         elif isinstance(base_dict[key], dict) and isinstance(other_dict[key], dict):
-            sub_missing_keys = find_missing_keys(base_dict[key], other_dict[key])
-            if sub_missing_keys:
+            if sub_missing_keys := find_missing_keys(
+                base_dict[key], other_dict[key]
+            ):
                 missing_keys[key] = sub_missing_keys
     return missing_keys
 
