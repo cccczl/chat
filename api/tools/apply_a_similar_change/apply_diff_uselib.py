@@ -22,7 +22,7 @@ with open(patched_file_path, 'w') as patched_file:
     patched_file.writelines(patched_contents)
 
 # optionally, rename the original file and rename the patched file to the original file name
-os.rename(original_file_path, original_file_path + '.bak')
+os.rename(original_file_path, f'{original_file_path}.bak')
 os.rename(patched_file_path, original_file_path)
 """
 Note that this program uses the `difflib` module to apply the diff. The `difflib.unified_diff()` function takes two lists of strings (the contents of the original file and the diff file) and returns a generator that yields the patched lines. The `writelines()` function is used to write the patched lines to a new file.
